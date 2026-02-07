@@ -39,12 +39,21 @@ function addSquare() {
   smallDiv.classList.add("smallDiv");
   smallDiv.style.width = `${100 / numOfSquares}%`;
   smallDiv.style.height = `${100 / numOfSquares}%`;
+  smallDiv.style.opacity = "0";
   smallDiv.addEventListener("mouseover", function () {
     if (colorfullDiv === false) {
       smallDiv.style.backgroundColor = "";
       smallDiv.classList.add("changeColor");
+      let currentOpacity = parseFloat(this.style.opacity);
+      if (currentOpacity < 1) {
+        this.style.opacity = currentOpacity + 0.1;
+      }
     } else {
       smallDiv.style.backgroundColor = currentRandomColor;
+      let currentOpacity = parseFloat(this.style.opacity);
+      if (currentOpacity < 1) {
+        this.style.opacity = currentOpacity + 0.1;
+      }
     }
   });
   container.appendChild(smallDiv);
